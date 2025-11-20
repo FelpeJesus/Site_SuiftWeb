@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Momo+Trust+Display&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #111;
+  color: #ffffff;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima de 100% da tela */
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main {
+  padding-top: 10rem; /* Espaço para a barra de navegação fixa */
+  flex-grow: 1; /* Faz o main crescer e empurrar o footer */
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* 3. BARRA DE NAVEGAÇÃO (HEADER) */
+.navbar {
+  /* Começa transparente */
+  background-color: transparent;
+  padding: 1.2rem 0;
+  /* Fixo no topo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Estilo do Navbar ao rolar a página */
+.navbar.scrolled {
+  background-color: rgba(17, 17, 17, 0.9); /* Fundo escuro translúcido */
+  background-color: #111; /* Fundo escuro sólido */
+  padding: 0.8rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Efeito de flutuação */
+  -webkit-backdrop-filter: blur(5px); /* Efeito de vidro fosco para navegadores compatíveis */
+  backdrop-filter: blur(5px);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* No seu style.css */
+
+.navbar .logo {
+  /* Mantive as propriedades que você já tinha */
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem; /* Este font-size será para o <a>, mas vamos sobrescrever o <p> */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* AS MUDANÇAS AQUI PARA COLOCAR O TEXTO ABAIXO DA IMAGEM */
+  display: flex; /* Já tinha, mas é importante */
+  flex-direction: column; /* <-- ISSO FARÁ OS ITENS FICAREM EM COLUNA */
+  align-items: center;   /* <-- ISSO CENTRARÁ A IMAGEM E O TEXTO HORIZONTALMENTE */
+  gap: 0.2rem;           /* <-- Espaçamento menor entre a imagem e o texto */
+}
+
+.navbar .logo img {
+  height: 100px; /* Ou ajuste a altura conforme preferir */
+  border-radius: 50%;
+  /* Talvez um margin-bottom pequeno se o gap não for suficiente ou se quiser mais espaço */
+  /* margin-bottom: 5px; */ 
+}
+
+/* Estilo para o nome da empresa */
+.navbar .logo p { 
+  color: #f5deb3;
+  font-weight: 700;
+  font-size: 1.4rem; /* Tamanho da fonte para o nome */
+  text-decoration: none; /* Removi o underline que você tinha, geralmente não se usa em logos */
+  margin: 0; /* Remove margem padrão de parágrafos */
+  line-height: 1; /* Garante que não haja espaço extra acima/abaixo do texto */
+}
+
+/* Você tinha um .navbar .logo strong, que não usaremos mais se o nome estiver em <p> */
+/* Se quiser manter o <strong> para o "SuiftWeb", o CSS seria assim: */
+/* .navbar .logo strong {
+    color: rgb(134, 42, 42); 
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1;
+} */
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar nav li {
+  margin-left: 1.5rem;
+}
+
+.navbar nav a {
+  font-size: 1.2rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px; /* Bordas arredondadas para efeito pílula */
+  font-weight: 700;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar nav a.active {
+  color: #ffffff;
+}
+
+.navbar nav a:hover {
+  color: #ffffff;
+  background-color: rgb(16, 106, 180);
+}
+
+
+.navbar nav a.active:hover {
+  background-color: rgb(134, 42, 42);
+}
+
+/* Botão de Orçamento no Menu */
+.btn-orcamento {
+  background-color: rgb(16, 106, 180);
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-weight: 700;
+}
+/* Hover do botão de Orçamento */ 
+.navbar nav a.btn-orcamento:hover {
+  background-color: rgb(134, 42, 42);
+}
+
+/* 4. SEÇÃO HERO (PRINCIPAL) */
+.hero {
+  display: flex;
+  position: relative; /* Essencial para posicionar o conteúdo sobre o vídeo */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 6rem 0;
+  overflow: hidden; /* Garante que o vídeo não ultrapasse a seção */
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+/* Cores da marca para o título */
+.hero h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-family: "Barlow", sans-serif;
+  font-size: 4rem;
+  background: linear-gradient(to right, #f5deb3, #f7e4c2, #f5e3c1, #fbf1e0, #fdf8ef, #f5e2bf, #f5e3c1, #f7e4c2, #f5deb3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #ccc;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.btn-orcamento-principal {
+  background-color: rgb(16, 106, 180);
+  color: #ffffff;
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-orcamento-principal:hover {
+  background-color: rgb(134, 42, 42);
+  transform: scale(1.05);
+}
+
+/* 5. RODAPÉ (FOOTER) */
+.site-footer {  
+  color: #ffffff;
+  background-color: #1a1a1a;
+  padding: 2rem 0;
+  margin-top: auto; /* Empurra o rodapé para o final da página */
+  border-top: 3px solid rgb(255, 255, 255);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: rgb(16, 106, 180);
+  margin-bottom: 1rem;
+  font-family: var(--fonte-titulo);
+}
+
+.footer-logo-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem; /* Diminuí o espaço entre a logo e o nome */
+  text-align: center;
+  text-decoration: none;
+}
+
+.footer-logo-link h3 {
+  color: wheat; /* Cor do nome da empresa alterada para branco */
+}
+
+.footer-logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #fff;
+}
+
+.payment-methods p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.payment-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.payment-icons span {
+  background-color: #fff;
+  color: #111;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  font-family: sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cores das marcas no hover */
+.payment-icons span:hover {
+  color: #fff;
+}
+
+.payment-icons span[data-method="pix"]:hover {
+  background-color: #32BCAD;
+  /* Verde do PIX */
+}
+
+.payment-icons span[data-method="visa"]:hover {
+  background-color: #1A1F71;
+  /* Azul da Visa */
+}
+
+.payment-icons span[data-method="master"]:hover {
+  background-color: #EB001B;
+  /* Vermelho da Mastercard */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+.footer-bottom p {
+  margin: 0.25rem 0;
+  color: #aaa;
+}
+
+.dev-credit {
+  font-size: 0.9rem;
+}
+
+/* BOTÃO VOLTAR AO TOPO */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(16, 106, 180);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none; /* Começa escondido */
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 0.4s, visibility 0.4s, background-color 0.3s;
+}
+
+.back-to-top-btn:hover {
+  background-color: rgb(134, 42, 42);
+}
+
+/* PAGINA SOBRE NÓS */
+.about-us {
+  padding: 4rem 0; /* Espaçamento interno para a seção */
+}
+
+.about-us h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: rgb(16, 106, 180);
+}
+
+/* Estilo global para texto em destaque */
+.about-us strong {
+  color: wheat;
+  font-weight: 700;
+}
+
+/* ESTILOS PARA O VÍDEO DE FUNDO */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca o vídeo atrás do conteúdo */
+}
+
+.video-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); /* Camada escura sobre o vídeo para legibilidade */
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz o vídeo cobrir toda a área sem distorcer */
+}
+
+/* PÁGINA DE PORTFÓLIO */
+.portfolio-section {
+  padding: 4rem 0;
+}
+
+.portfolio-section h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: rgb(16, 106, 180);
+}
+
+.portfolio-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+  color: #ccc;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Garante que a imagem não saia do card */
+}
+
+.project-image {
+  width: 100%;
+  height: 180px; /* Altura fixa para manter os cards alinhados */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+.project-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o conteúdo crescer para preencher o card */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card-content h3 {
+  margin-top: 0;
+  color: rgb(16, 106, 180);
+}
+
+.project-card-content p {
+  flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
+  color: #ccc;
+}
+
+.project-card .project-link {
+  background-color: rgb(16, 106, 180);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.project-card .project-link:hover {
+  background-color: rgb(134, 42, 42);
+}
+
+/* PÁGINA DE SERVIÇOS */
+.services-section {
+  padding: 4rem 0;
+}
+
+.services-section h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: rgb(16, 106, 180);
+}
+
+.services-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+  color: #ccc;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* PÁGINA DE SERVIÇOS */
+.services-section {
+  padding: 4rem 0;
+}
+
+.services-section h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: rgb(16, 106, 180);
+}
+
+.services-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+  color: #ccc;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
