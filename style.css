@@ -125,6 +125,7 @@ a {
 
 .navbar nav a.active {
   color: #ffffff;
+  background-color: rgb(134, 42, 42); /* Fundo sutil para indicar a página ativa */
 }
 
 .navbar nav a:hover {
@@ -541,4 +542,52 @@ a {
 .service-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 768px) {
+    main {
+        padding-top: 2rem; /* Reduz o espaço no topo */
+    }
+
+    /* --- Ajustes no Menu --- */
+    .navbar {
+        position: relative; /* Remove a posição fixa */
+        padding: 1rem 0;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .navbar nav li {
+        margin-left: 0;
+    }
+
+    /* --- Ajustes na Seção Hero --- */
+    .hero {
+        min-height: 60vh;
+        padding: 4rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* --- Ajustes no Rodapé --- */
+    .footer-content {
+        grid-template-columns: 1fr; /* Empilha as colunas */
+        text-align: center;
+    }
 }
